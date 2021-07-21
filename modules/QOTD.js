@@ -34,7 +34,7 @@ const qotdOuput = qotd => {
     .setTitle(qotd)
     .setAuthor('Question of the day:')
     .setDescription('Answer Mrs. Beasley\'s question of the day, if you wish.')
-    .attachFiles(['../assets/mrsBeasley.jpg'])
+    .attachFiles(['./modules/assets/mrsBeasley.jpg'])
     .setThumbnail('attachment://mrsBeasley.jpg')
     .setTimestamp()
     .setFooter('Meow Meow');

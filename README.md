@@ -1,10 +1,10 @@
 # Mrs. Beasley (Discord Bot)
 
-### This bot is my volunteer work for the /r/loseitchallenges hosted on Reddit and Discord quarterly. Functions of this bot are made to assist in the moderation of the challenge, and has already saved me more time than completing the tasks it does manually.
+#### This bot is my volunteer work for the /r/loseitchallenges hosted on Reddit and Discord quarterly. Functions of this bot are made to assist in the moderation of the challenge, and has already saved me more time than completing the tasks it does manually.
 
-### The bot is named after my cat, Mrs. Beasley, and takes after her sassy personality.
+#### The bot is named after my cat, Mrs. Beasley, and takes after her sassy personality.
 
-## What I can do:
+## User Commands:
 
 - `!convert` to make a unit conversion (kg/lbs, C/F, mi/km only)
   - *Example:* `!convert 20kg` or `!convert 55f`
@@ -45,3 +45,13 @@
 - `!choose` to make the bot decide something for you. Prompts are separated by commas.     
   - *Syntax:* `!choose [something], [something], [something]`
 ---
+## Admin Commands
+### QOTD Functions
+- `$qotd` Posts the question of the day in the general chat and prompts admin to delete the question from the database after posting in the admin bot chat
+---
+- `$new` adds a new question from the database
+---
+- `$del` deletes a question from the database 
+  - *Note:* Spelling, caps, spacing, and markdown features must be exact, so it is best to capy and paste from the list of questions
+---
+- `$list` lists all the questions in the database
