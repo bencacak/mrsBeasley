@@ -8,7 +8,7 @@ const imperialTdee = (sex, age, height, weight) => {
     .setURL('https://www.npmjs.com/package/fitness-calculator')
     .setAuthor('Mrs. Beasley')
     .setDescription(`This is your estimated daily energy expediture.`)
-    .attachFiles(['../assets/mrsBeasley.jpg'])
+    .attachFiles(['./modules/assets/mrsBeasley.jpg'])
     .setThumbnail('attachment://mrsBeasley.jpg')
     .addFields(
       { name: 'Your BMR', value: Math.round(fitnessCalculatorFunctions.BMR(sex, age, height, weight)) },
@@ -32,7 +32,7 @@ const metricTdee = (sex, age, height, weight) => {
     .setURL('https://www.npmjs.com/package/fitness-calculator')
     .setAuthor('Mrs. Beasley')
     .setDescription(`This is your estimated daily energy expediture.`)
-    .attachFiles(['../assets/mrsBeasley.jpg'])
+    .attachFiles(['./modules/assets/mrsBeasley.jpg'])
     .setThumbnail('attachment://mrsBeasley.jpg')
     .addFields(
       { name: 'Your BMR', value: Math.round(fitnessCalculatorFunctions.BMR(sex, age, height, weight)) },

@@ -186,7 +186,7 @@ if (msg.content.startsWith('!tdee')) {
         .setColor('#000')
         .setTitle(eightBallResponse[Math.floor(Math.random() * eightBallResponse.length)])
         .setAuthor('Mrs. Beasley Says:')
-        .attachFiles(['./assets/mrsBeasley.jpg'])
+        .attachFiles(['./modules/assets/mrsBeasley.jpg'])
         .setThumbnail('attachment://mrsBeasley.jpg')
         .setDescription(input)
         .attachFiles(['./assets/mrsBeasley.jpg'])

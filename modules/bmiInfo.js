@@ -26,13 +26,13 @@ const imperialBMI = (height, weight, bmi) => {
     .setURL('https://www.npmjs.com/package/fitness-calculator')
     .setAuthor('Mrs. Beasley')
     .setDescription(`You are **${findHealthStatus(bmi)}**.`)
-    .attachFiles(['../assets/mrsBeasley.jpg'])
+    .attachFiles(['./modules/assets/mrsBeasley.jpg'])
     .setThumbnail('attachment://mrsBeasley.jpg')
     .addFields(
       { name: 'Your BMI', value: bmi },
       { name: '\u200B', value: '\u200B' },
       { name: `Height:`, value: `${height / 2.54} inches`, inline: true },
-      { name: 'Weight:', value: `${weight / 2.21} lbs`, inline: true },
+      { name: 'Weight:', value: `${weight * 2.21} lbs`, inline: true },
       { name: '\u200B', value: '\u200B' },
       { name: 'Underweight:', value: 'BMI < 18.5' , inline: true },
       { name: 'Normal Weight:', value: 'BMI 18.5 to 24.99', inline: true },
@@ -41,7 +41,7 @@ const imperialBMI = (height, weight, bmi) => {
       { name: 'Obese Class II:', value: 'BMI 35 to 39.99', inline: true },
       { name: 'Obese Class III (Morbid):', value: 'BMI > 40', inline: true }
     )
-    .attachFiles(['../assets/BMI.png'])
+    .attachFiles(['./modules/assets/BMI.png'])
     .setImage('attachment://BMI.png')
     .setTimestamp()
     .setFooter('Meow Meow');
@@ -57,7 +57,7 @@ const metricBMI = (height, weight, bmi) => {
     .setURL('https://www.npmjs.com/package/fitness-calculator')
     .setAuthor('Mrs. Beasley')
     .setDescription(`You are **${findHealthStatus(bmi)}**.`)
-    .attachFiles(['../assets/mrsBeasley.jpg'])
+    .attachFiles(['./modules/assets/mrsBeasley.jpg'])
     .setThumbnail('attachment://mrsBeasley.jpg')
     .addFields(
       { name: 'Your BMI', value: bmi },
@@ -72,7 +72,7 @@ const metricBMI = (height, weight, bmi) => {
       { name: 'Obese Class II:', value: 'BMI 35 to 39.99', inline: true },
       { name: 'Obese Class III (Morbid):', value: 'BMI > 40', inline: true }
     )
-    .attachFiles(['../assets/BMI.png'])
+    .attachFiles(['./modules/assets/BMI.png'])
     .setImage('attachment://BMI.png')
     .setTimestamp()
     .setFooter('Meow Meow');
