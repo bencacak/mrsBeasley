@@ -189,14 +189,13 @@ if (msg.content.startsWith('!tdee')) {
         .attachFiles(['./modules/assets/mrsBeasley.jpg'])
         .setThumbnail('attachment://mrsBeasley.jpg')
         .setDescription(input)
-        .attachFiles(['./assets/mrsBeasley.jpg'])
-        .setThumbnail('attachment://mrsBeasley.jpg')
         .setTimestamp()
         .setFooter('Meow Meow'); 
       await msg.channel.send(output);
       }
       catch (err) {
         msg.reply(`Something went wrong. Please try again.`);
+        console.log(err);
       };
     };
   };
