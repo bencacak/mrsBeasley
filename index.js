@@ -12,12 +12,15 @@ const bingo = require('./modules/bingoRoleManager.js');
 const tdeeInfo = require('./modules/tdeeInfo.js');
 const qotd = require('./modules/QOTD.js');
 const config = require('./config.json');
+const converter = require('./modules/converter.js');
+const eightball = require('./modules/eightball.js');
 
 
 //Imported functions from other JS libraries
 const fitnessCalculatorFunctions = require("fitness-calculator");
 const dayjs = require('dayjs');
-
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
 
 //Looks for keywords in messages to reply to the channel and users
 client.on("message", async msg => {
@@ -32,9 +35,34 @@ client.on("message", async msg => {
   if (msg.content.startsWith('!help') || msg.content === 'help' || msg.content === 'Help') {
 
     const help = data.help;
-    return msg.channel.send(help);
+    return msg.channel.send(help());
 
   };
+
+  //I want to make a feature where the bot will react to the last sent message in the chat
+  if (msg.content.startsWith('!react')) {
+    //Gets the last sent message in the channel
+    const messages = await msg.channel.messages.fetch({ limit: 2 });
+    const lastMessage = messages.last();
+
+    //Separtes the command from the emote 
+    const command = '!react '
+    let input = msg.content.split(command)[1];
+
+  
+    try {
+
+      await lastMessage.react(input);
+      await console.log(`${msg.author.username} reacted to ${lastMessage} with ${input}`);
+      await msg.delete({ timeout: 100});
+      
+      
+    } catch (err) {
+      await msg.delete({ timeout: 100});
+      await msg.channel.send('Please insert only one emoji with a single space between the command and desrired reaction. *Note:* If you have Nitro, I must be in the server that contains the emoji you want to react with.');
+      console.log(err);
+    };
+  }
 
   //bot will choose between prompts based on a user's input. 
   if (msg.content.startsWith('!choose')) {
@@ -62,18 +90,18 @@ client.on("message", async msg => {
   };
 
   if (msg.content.startsWith('!metric bmi')) {  
-  const command = '!metric bmi ';
-  const input = msg.content.split(command)[1];
-  const values = input.split(' ');
+    const command = '!metric bmi ';
+    const input = msg.content.split(command)[1];
+    const values = input.split(' ');
 
-  const height = Number.parseFloat(values[0]);
-  const weight = Number.parseFloat(values[1]);
-  
-  const bmi = fitnessCalculatorFunctions.BMI(height, weight);
-  
-  const output = bmiInfo.metricBMI;
+    const height = Number.parseFloat(values[0]);
+    const weight = Number.parseFloat(values[1]);
+    
+    const bmi = fitnessCalculatorFunctions.BMI(height, weight);
+    
+    const output = bmiInfo.metricBMI;
 
-  msg.reply(output(height, weight, bmi));
+    msg.reply(output(height, weight, bmi));
 };
 
 if (msg.content.startsWith('!tdee')) {
@@ -152,21 +180,20 @@ if (msg.content.startsWith('!tdee')) {
         await msg.react('❕');
       }
       catch (err) {
-        msg.reply('Something went wrong. Please try again.');
+        msg.reply('This feature is exclusive to team Road Trippin\'.');
+        console.log(err);
       };
     };
     
-  };
+  }; //Ends !bingo listener
 
   //Executes the !log/?schedule commands for the loseit server, pulls from arrays above
   if (msg.content.startsWith('!forms')) {
-    const loseitLogs = data.loseitLogs;
-    msg.channel.send(loseitLogs);
+    msg.channel.send(data.loseitLogs);
   };
 
   if (msg.content.startsWith('!schedule')) {
-    let loseitSchedule = data.loseitSchedule
-    msg.channel.send(loseitSchedule);
+    msg.channel.send(data.loseitSchedule);
     //Alternatively, you can have the bot summon a screenshot of the schedule
   };
 
@@ -176,29 +203,18 @@ if (msg.content.startsWith('!tdee')) {
     const command = '!eightball ';
     const input = msg.content.split(command)[1];
     
-    const eightBallResponse = data.eightBallResponses;
-    
     if (!input) {
       msg.reply('You have to ask me a question!')
     } else {
       try {
-      const output = await new Discord.MessageEmbed()
-        .setColor('#000')
-        .setTitle(eightBallResponse[Math.floor(Math.random() * eightBallResponse.length)])
-        .setAuthor('Mrs. Beasley Says:')
-        .attachFiles(['./modules/assets/mrsBeasley.jpg'])
-        .setThumbnail('attachment://mrsBeasley.jpg')
-        .setDescription(input)
-        .setTimestamp()
-        .setFooter('Meow Meow'); 
-      await msg.channel.send(output);
+      await msg.channel.send(eightball.eightball(input));
       }
       catch (err) {
         msg.reply(`Something went wrong. Please try again.`);
         console.log(err);
       };
     };
-  };
+  };//Ends !eightball listener
 
   if (msg.content.startsWith('!chug')) {
 
@@ -220,7 +236,7 @@ if (msg.content.startsWith('!tdee')) {
   }; //ends event listener
 
   // Will convert text into lettered emojis
-  if (msg.content.startsWith('!spell') || msg.content.startsWith('?spell')) {
+  if (msg.content.startsWith('!spell')) {
     let output = emojifierFunction.output;
     const spell = emojifierFunction.spell;
     const clearOutput = emojifierFunction.clearOutput;
@@ -253,7 +269,55 @@ if (msg.content.startsWith('!tdee')) {
     };
   };
 
+  if (msg.content.startsWith('!convert')) {
+
+    const values = msg.content.split(' ');
+
+    const startingValue = values[1].toLowerCase();
+    const metric = values[2].toLowerCase();
+    const newMetric = values[4].toLowerCase();
+
+    if (values.length !== 5 && values[1] !== 'help' && values[1] !== 'units'){
+      
+      msg.reply('If I am going to do math for you, I\'m going to picky about the syntax.');
+      msg.channel.send('Use `!convert help` if you need assistance.');
+
+    } else if (values[1] === 'help') {
+      msg.channel.send(converter.help);
+    } else if (values[1] === 'units') {
+      msg.channel.send(JSON.stringify(converter.units.mass));
+      msg.channel.send(JSON.stringify(converter.units.volume));
+      msg.channel.send(JSON.stringify(converter.units.length));
+      } else {
+      try {
+        await msg.channel.send('Hold on, let me my calculator...');
+        await setTimeout(function(){ 
+          msg.reply(converter.converter(startingValue, metric, newMetric));
+        }, 3000);
+      } catch (err) {
+        msg.channel.send('Something went wrong; use `!convert help` for help.');
+        console.log(err);
+      };//Ends try block
+    };//Ends conditional
+
+  };//Ends the *new* convert command listener
+
+  if (!msg.content.startsWith('!convert') && converter.autoConvertTriggers.some(trigger => msg.content.includes(trigger))) {
+    
+    const input = msg.content;
+    const value = Number.parseFloat(input);
+    
+    if (Number.isNaN(value)) {
+      return;
+    } else {
+      msg.reply(converter.autoConvert(input));
+    };
+
+  };
+  //Temporarily deprecated. Future plans include automation of this function based on a number-metric abbreviation trigger. I would like to put the logic in another file as well to clean up
   //Will handle imperial/metric conversions
+
+  /*
   if (msg.content.startsWith('!convert')) {
 
     const command = '!convert';
@@ -296,14 +360,16 @@ if (msg.content.startsWith('!tdee')) {
       };
 
     }; // Closes function
+    
      
     // Keeps the code from breaking if userInput is false 
      if (!userInput || userInput === false) {
-      return msg.reply('I can\'t handle that conversion. Use `!conversions` or `?conversions` to pull up a list of unit conversions.');
+      return msg.reply('I can\'t handle that conversion. Use `!conversions` to pull up a list of unit conversions.');
       } else {
       return msg.reply(convert(userValue));
       };
   };
+  */
 
   if (msg.content.startsWith('!conversions')) {
     
@@ -379,8 +445,8 @@ if (msg.content.startsWith('!tdee')) {
       echo();
       msg.channel.send(output);
       //Will delete the message from a user with the command
-      msg.delete({ timeout: 500 })
-      .then(msg => console.log(`Deleted message "${input}" from ${msg.author.username} after 0.5 seconds`))
+      msg.delete({ timeout: 100 })
+      .then(msg => console.log(`Deleted message "${input}" from ${msg.author.username} after 100ms`))
       .catch(console.error);
     };
      
@@ -410,7 +476,7 @@ if (msg.content.startsWith('!tdee')) {
     if (command === 'new') {
       question = msg.content.split("$new ")[1];
       updateQuestions(question);
-      msg.channel.send(`New question added: \`${question}\``);
+      msg.channel.send(`:floppy_disk: New question saved: \`${question}\``);
     };
 
     if (command === 'del') {
@@ -434,9 +500,11 @@ if (msg.content.startsWith('!tdee')) {
 //Logs to the console when it is ready
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity('Catch the Red Dot');
+  //client.user.setAvatar('./modules/assets/avatar.jpg');
 
-  //Kill switch for data base. Uncomment and re-run code to delete all data
+  client.user.setActivity('Chase Milo Around the House');
+
+  //Kill switch for data base. Uncomment and re-run code to delete all data. Then re-comment out code and re-run again
   const db = qotd.db;
   //db.delete("questions").then(() => {});
 });

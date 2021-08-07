@@ -8,19 +8,28 @@
 
 ### Unit Converter Commands
 
-- `!convert` to make a unit conversion (kg/lbs, C/F, mi/km only)
-  - *Example:* `!convert 20kg` or `!convert 55f`
+- `!convert` to make a unit conversion to a select unit
+  - *Syntax:* `!convert <value> <unit abbreviation> to <new unit abbreviation>`
+  - *Example:* `!convert 20 kg to g` or `!convert 55 gal to qt`
 
 ---    
 
-    !convert 32f
+    !convert 360 mi to m
 
-    //Output: 0 degrees celcius
+    //Output: 
 
-![a screenshot of the output](./modules/assets/convert.JPG)
+![a screenshot of the output](./modules/assets/convertTo.png)
 
 
 ---
+
+Mrs. Beasley will automatically do some conversions if a message contains a value and an accepted unit as an argument.
+
+    190 lbs
+
+    //Output:
+
+![An example of this function in action](./modules/assets/autoConvert.png)
 
 - `!conversions` to pull up a unit conversion chart
 

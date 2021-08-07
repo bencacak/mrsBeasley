@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 //This file has all of the information conataining arrays
 
 //Store the prompts for the ! and ? commands
@@ -7,10 +9,10 @@ const loseitLogs = [
   //'[link]',
   //Weight
   '**Log your weight:**', 
-  'https://docs.google.com/forms/d/e/1FAIpQLScL_BzXPBrXoh_Esdys1w3XdQneTawK94aww0e2afIobsuIng/viewform',
+  'https://docs.google.com/forms/d/e/1FAIpQLSe560-b7lwfOObgYiBoVjGQJZGtA4BsLZamMG_fYJwDZGxXbA/viewform?usp=sf_link',
   //Activity
   '**Log your activity & steps:**',
-  'https://docs.google.com/forms/d/e/1FAIpQLSdUGLGHQIHOidwGDytrS6QE0ygVwwgYaS87BXh2b4W7TLVXcg/viewform',
+  'https://docs.google.com/forms/d/e/1FAIpQLSd0g1EdICptCaZ60kFBU3HdWnuyyGz4mmspDQs8YS_-5fEEMw/viewform?usp=sf_link',
   '**Challenge tracker:**',
   'https://docs.google.com/spreadsheets/d/11Xko94N3_uqxsAwgjOdiZFSmeW8f-0NGJzKvIkuptfw/edit#gid=2084186245',
   '*Hint: use `!schedule` or `?schedule` to show the dates for the challenge*'
@@ -54,39 +56,25 @@ const conversions = [
   '(F - 32) / 1.8 = C  //  C * 1.8 + 32 = F'
 ];
 
+const help = () => {
 
-const help = [
-  '- `!convert` to make a unit conversion (kg/lbs, C/F, mi/km only)',
-  '- `!conversions` to pull up a unit conversion chart',
-  '- `!converttocat` to convert a message into cat language',
-  '- `!spell` to emojify a message',
-  '- `!eightball` to make a prediction',
-  '- `!forms` to summon challenge logs',
-  '- `!schedule` to summon challenge schedule',
-  '- `!bmi` to calculate BMI. Syntax: `!bmi [height in inches (number only)] [weight in pounds (number only)]`. Example `!bmi 74 195` for a 74 inch tall and 195 lb person',
-  '- `!metric bmi` to calculate BMI. Syntax: `!metricbmi [height in cm (number only)] [weight in kg (number only)]`. Example `!metricbmi 188 88.24` for a 74 inch tall and 195 lb person',
-  '- `!tdee` to calculate tdee. Syntax: `!tdee [male/female or m/f] age [height in inches(number only)] [weight in lbs (number only)]`. Example: `!tdee male 23 74 195`',
-  '- `!metric tdee` to calculate tdee. Syntax: `!metrictdee [male/female or m/f] age [height in cm (number only)] [weight in kg (number only)]`. Example: `!merictdee male 23 188 88.24`',
-  '`echo >>` to have the bot repeat a user\'s message. The bot will automatically delete the user\'s original message after 0.5s. *Example:* `echo >>Hello world!` Output: `Hello world!`',
-  '`!roll` to roll virtual dice *Syntax:* `!roll [number of dice]d[number of sides]` Number of dice can be left blank and will default to one die with `!roll d[number of sides]` *Example:* `!roll 3d6` for 3 d6 dice or `!roll d12` for 1 d12 die.',
-  '`!bingo` to add the weekly `Got Bingo` role to yourself.',
-  '`!choose` to make the bot decide something for you. Prompts are separated by commas. *Syntax:* `!choose [something], [something], [something]`'
-];
+  const output = new Discord.MessageEmbed()
+    .setColor('#000')
+    .setTitle('Command Help')
+    .setURL('https://github.com/bencacak/mrsBeasley/blob/master/README.md')
+    .setAuthor('Mrs. Beasley et al.')
+    .setDescription(`Click the link to find out more about my commands.`)
+    .attachFiles(['./modules/assets/mrsBeasley.jpg'])
+    .setThumbnail('attachment://mrsBeasley.jpg')
+    .setTimestamp()
+    .setFooter('Meow Meow');
 
-const eightBallResponses = [
-  'It is certain',
-  'It is decidedly so',
-  'Reply hazy try again',
-  'Cannot predict now',
-  'Do not count on it',
-  'My sources say no',
-  'Outlook not so good',
-  'Signs point to yes'
-];
+    return output;
+};
+
 
 module.exports.chugImg = chugImg;
 module.exports.loseitLogs = loseitLogs;
 module.exports.loseitSchedule = loseitSchedule;
 module.exports.conversions = conversions;
 module.exports.help = help;
-module.exports.eightBallResponses = eightBallResponses;
