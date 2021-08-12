@@ -248,7 +248,7 @@ Mrs. Beasley will automatically do some conversions if a message contains a valu
 ---
 
 - `$del` deletes a question from the database 
-  - *Note:* Spelling, caps, spacing, and markdown features must be exact, so it is best to copy and paste from the list of questions
+  - *Note:* Spelling, caps, spacing, and markdown features must be exact, so it is best to copy and paste from the list of questions.
 
 ---
 

@@ -169,14 +169,14 @@ if (msg.content.startsWith('!tdee')) {
       return msg.reply(`There is no bingo challenge happening right now. Please ping a captain for details.`)
     } else {
       try {
-        await member.roles.add(roleFinder(date.month, date.day));
-        await msg.reply(`Nice work on getting bingo on ${weekdays[date.dayOfWeek]}, ${months[date.month]} ${date.day}. Wet nose kisses for you!`);
         await msg.react('🇧');
         await msg.react('🇮');
         await msg.react('🇳');
         await msg.react('🇬');
         await msg.react('🇴');
         await msg.react('❕');
+        await member.roles.add(roleFinder(date.month, date.day));
+        await msg.reply(`Nice work on getting bingo on ${weekdays[date.dayOfWeek]}, ${months[date.month]} ${date.day}. Wet nose kisses for you!`);
       }
       catch (err) {
         msg.reply('This feature is exclusive to team Road Trippin\'.');
@@ -381,12 +381,15 @@ if (msg.content.startsWith('!tdee')) {
     if (!input) {
       return;
     } else {
-      echo();
-      msg.channel.send(output);
-      //Will delete the message from a user with the command
-      msg.delete({ timeout: 100 })
-      .then(msg => console.log(`Deleted message "${input}" from ${msg.author.username} after 100ms`))
-      .catch(console.error);
+      try {
+        await echo();
+        await msg.channel.send(output);
+        //Will delete the message from a user with the command
+        await msg.delete({ timeout: 100 });
+        await console.log(`Deleted message "${input}" from ${msg.author.username} after 100ms`);
+      } catch (err) {
+        console.log(err);
+      };
     };
      
   };
