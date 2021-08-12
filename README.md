@@ -23,6 +23,8 @@
 
 ---
 
+##### Note: Auto conversions are temporarily disabled--will likely export to Milo Bot
+
 Mrs. Beasley will automatically do some conversions if a message contains a value and an accepted unit as an argument.
 
     190 lbs
