@@ -5,4 +5,4 @@ const someWords = [
   'milo',
   'Milo',
   
-]
+];

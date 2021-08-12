@@ -269,3 +269,11 @@ Mrs. Beasley will automatically do some conversions if a message contains a valu
     //Output:
 
 ![a screenshot of the output](./modules/assets/list.JPG)
+
+---
+
+### Add Mrs. Beasley to your server:
+
+###### Link is in the environmental variables file.
+
+![A screenshot of the permissions she needs](./modules/assets/permissions.JPG)

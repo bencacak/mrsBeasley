@@ -3,18 +3,17 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 // Imported function from different modules that I created to keep code a bit cleaner here
-const data = require("./modules/kittyData.js");
-const convertToCat = require("./modules/convertToCat.js");
-const bmiInfo = require("./modules/bmiInfo.js");
-const emojifierFunction = require("./modules/emojifierFunction.js");
-const choose = require("./modules/choose.js");
-const bingo = require('./modules/bingoRoleManager.js');
-const tdeeInfo = require('./modules/tdeeInfo.js');
-const qotd = require('./modules/QOTD.js');
-const config = require('./config.json');
+const data = require("./modules/kittydata.js");
+const convertToCat = require("./modules/converttocat.js");
+const bmiInfo = require("./modules/bmiinfo.js");
+const emojifierFunction = require("./modules/emojifierfunction.js");
+const bingo = require('./modules/bingorolemanager.js');
+const tdeeInfo = require('./modules/tdeeinfo.js');
+const qotd = require('./modules/qotd.js');
 const converter = require('./modules/converter.js');
 const eightball = require('./modules/eightball.js');
 
+const config = require('./config.json');
 
 //Imported functions from other JS libraries
 const fitnessCalculatorFunctions = require("fitness-calculator");
@@ -302,10 +301,12 @@ if (msg.content.startsWith('!tdee')) {
 
   };//Ends the *new* convert command listener
 
+  /*
   if (!msg.content.startsWith('!convert') && converter.autoConvertTriggers.some(trigger => msg.content.includes(trigger))) {
     
     const input = msg.content;
     const value = Number.parseFloat(input);
+    //msg.channel.send('I am a triggered gorl.')
     
     if (Number.isNaN(value)) {
       return;
@@ -314,71 +315,9 @@ if (msg.content.startsWith('!tdee')) {
     };
 
   };
-  //Temporarily deprecated. Future plans include automation of this function based on a number-metric abbreviation trigger. I would like to put the logic in another file as well to clean up
-  //Will handle imperial/metric conversions
-
-  /*
-  if (msg.content.startsWith('!convert')) {
-
-    const command = '!convert';
-    const userInput = msg.content.split(command)[1]; //splits command from rest of string
-    const userValue = Number.parseFloat(userInput);
-
-    const convert = value => {
-      value = userValue;
-      const input = userInput.toLowerCase();
-      let convertedValue;
-      let newMetric;
-      
-      if (input.includes('kilogram') || input.includes('kg')) {
-        convertedValue = value * 2.205;
-        newMetric = 'pounds';
-      } else if (input.includes('pound') || input.includes('lb')) {
-        convertedValue = value / 2.205;
-        newMetric = 'kilograms';
-      } else if (input.includes('kilometer') || input.includes('km')) {
-        convertedValue = value * (61/100);
-        newMetric = 'miles';
-      } else if (input.includes('mi')) {
-        convertedValue = value / (61/100);
-        newMetric = 'kilometers';
-      } else if (input.includes('c')) {
-        convertedValue = value * 1.8 + 32;
-        newMetric = 'degrees fahrenheit';
-      } else if (input.includes('f')) {
-        convertedValue = (value - 32) / 1.8;
-        newMetric = 'degrees celsius';
-      } else {
-        convertedValue = false;
-        newMetric = false;
-      };
-
-      if (convertedValue && newMetric) {
-        return `${input} is equal to ${convertedValue} ${newMetric}.`;
-      } else {
-        return 'I can\'t handle that conversion. Use `!conversions` or `?conversions` to pull up a list of unit conversions.';
-      };
-
-    }; // Closes function
-    
-     
-    // Keeps the code from breaking if userInput is false 
-     if (!userInput || userInput === false) {
-      return msg.reply('I can\'t handle that conversion. Use `!conversions` to pull up a list of unit conversions.');
-      } else {
-      return msg.reply(convert(userValue));
-      };
-  };
   */
 
-  if (msg.content.startsWith('!conversions')) {
-    
-    const conversions = data.conversions;
-    return msg.channel.send(conversions);
-  };
-
-  //dice rolling feature I hope to have working soon
-   if (msg.content.startsWith('!roll')) {
+  if (msg.content.startsWith('!roll')) {
     
     const command = '!roll';
     
