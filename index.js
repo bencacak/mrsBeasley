@@ -5,10 +5,8 @@ const client = new Discord.Client();
 // Imported function from different modules that I created to keep code a bit cleaner here
 const data = require("./modules/kittydata.js");
 const convertToCat = require("./modules/converttocat.js");
-const bmiInfo = require("./modules/bmiinfo.js");
 const emojifierFunction = require("./modules/emojifierfunction.js");
 const bingo = require('./modules/bingorolemanager.js');
-const tdeeInfo = require('./modules/tdeeinfo.js');
 const qotd = require('./modules/qotd.js');
 const converter = require('./modules/converter.js');
 const eightball = require('./modules/eightball.js');
@@ -23,6 +21,7 @@ const timezone = require('dayjs/plugin/timezone');
 
 //Looks for keywords in messages to reply to the channel and users
 client.on("message", async msg => {
+  
   //Blocks beasleyBot from responding to herself
   if (msg.author.bot) { 
     return;
@@ -31,7 +30,7 @@ client.on("message", async msg => {
   // !/? Commands section
 
   //Will pull up a list of commands
-  if (msg.content.startsWith('!help') || msg.content === 'help' || msg.content === 'Help') {
+  if (msg.content === 'help' || msg.content === 'Help') {
 
     const help = data.help;
     return msg.channel.send(help());
@@ -71,86 +70,6 @@ client.on("message", async msg => {
     return msg.channel.send(values[Math.floor(Math.random() * values.length)]);
   };
 
-  //Starts the BMI/TDEE calculator commands
-  
-  if (msg.content.startsWith('!bmi')) {  
-    const command = '!bmi ';
-    const input = msg.content.split(command)[1];
-    const values = input.split(' ');
-
-    const height = Number.parseFloat(values[0]) * 2.54;
-    const weight = Number.parseFloat(values[1]) / 2.21;
-    
-    const bmi = fitnessCalculatorFunctions.BMI(height, weight);
-
-    const output = bmiInfo.imperialBMI;
-  
-    msg.reply(output(height, weight, bmi));
-  };
-
-  if (msg.content.startsWith('!metric bmi')) {  
-    const command = '!metric bmi ';
-    const input = msg.content.split(command)[1];
-    const values = input.split(' ');
-
-    const height = Number.parseFloat(values[0]);
-    const weight = Number.parseFloat(values[1]);
-    
-    const bmi = fitnessCalculatorFunctions.BMI(height, weight);
-    
-    const output = bmiInfo.metricBMI;
-
-    msg.reply(output(height, weight, bmi));
-};
-
-if (msg.content.startsWith('!tdee')) {
-    const command = '!tdee ';
-    const input = msg.content.split(command)[1];
-    input.toLowerCase;
-    const values = input.split(' ');
-
-    let sex;
-    const age = Number.parseFloat(values[1]);
-    const height = Number.parseFloat(values[2]) * 2.54;
-    const weight = Number.parseFloat(values[3]) / 2.21;
-
-    if (values[0] === 'm' || values[0] === 'male') {
-      sex = 'male';
-    } else {
-      sex = 'female';
-    };
-    
-
-    const output = tdeeInfo.imperialTdee;
-
-    msg.reply(output(sex, age, height, weight));
-    
-  };
-
-  if (msg.content.startsWith('!metric tdee')) {
-    
-    const command = '!metric tdee ';
-    const input = msg.content.split(command)[1];
-    input.toLowerCase;
-    const values = input.split(' ');
-
-    let sex;
-    const age = Number.parseFloat(values[1]);
-    const height = Number.parseFloat(values[2]);
-    const weight = Number.parseFloat(values[3]);
-
-    if (values[0] === 'm' || values[0] === 'male') {
-      sex = 'male';
-    } else {
-      sex = 'female';
-    };
-    
-    const output = tdeeInfo.metricTdee;
-
-    msg.reply(output(sex, age, height, weight));
-    
-  };
-
   //Will assign a user a role if they get bingo; makes creating certificates easier
   if (msg.content.startsWith('!bingo')) {
 
@@ -165,9 +84,11 @@ if (msg.content.startsWith('!tdee')) {
     const months = bingo.months;
     const member = msg.member;
 
+    /*
     if (roleFinder(date.month, date.day) === false) {
       return msg.reply(`There is no bingo challenge happening right now. Please ping a captain for details.`)
     } else {
+      */
       try {
         await msg.react('🇧');
         await msg.react('🇮');
@@ -175,26 +96,16 @@ if (msg.content.startsWith('!tdee')) {
         await msg.react('🇬');
         await msg.react('🇴');
         await msg.react('❕');
-        await member.roles.add(roleFinder(date.month, date.day));
+        //await member.roles.add(roleFinder(date.month, date.day));
         await msg.reply(`Nice work on getting bingo on ${weekdays[date.dayOfWeek]}, ${months[date.month]} ${date.day}. Wet nose kisses for you!`);
       }
       catch (err) {
         msg.reply('This feature is exclusive to team Road Trippin\'.');
         console.log(err);
       };
-    };
+    //};
     
   }; //Ends !bingo listener
-
-  //Executes the !log/?schedule commands for the loseit server, pulls from arrays above
-  if (msg.content.startsWith('!forms')) {
-    msg.channel.send(data.loseitLogs);
-  };
-
-  if (msg.content.startsWith('!schedule')) {
-    msg.channel.send(data.loseitSchedule);
-    //Alternatively, you can have the bot summon a screenshot of the schedule
-  };
 
   //Will execute the !/?eightball command
   if (msg.content.startsWith('!eightball')) {
@@ -253,6 +164,7 @@ if (msg.content.startsWith('!tdee')) {
   };
 
   // Will convert a user's message to a North American Dialect of cat language
+
   if (msg.content.startsWith('!converttocat')) {
     
     //separates the command from the rest of the message
@@ -272,9 +184,9 @@ if (msg.content.startsWith('!tdee')) {
 
     const values = msg.content.split(' ');
 
-    const startingValue = values[1].toLowerCase();
-    const metric = values[2].toLowerCase();
-    const newMetric = values[4].toLowerCase();
+    const startingValue = values[1];
+    const metric = values[2];
+    const newMetric = values[4];
 
     if (values.length !== 5 && values[1] !== 'help' && values[1] !== 'units'){
       
@@ -301,21 +213,6 @@ if (msg.content.startsWith('!tdee')) {
 
   };//Ends the *new* convert command listener
 
-  /*
-  if (!msg.content.startsWith('!convert') && converter.autoConvertTriggers.some(trigger => msg.content.includes(trigger))) {
-    
-    const input = msg.content;
-    const value = Number.parseFloat(input);
-    //msg.channel.send('I am a triggered gorl.')
-    
-    if (Number.isNaN(value)) {
-      return;
-    } else {
-      msg.reply(converter.autoConvert(input));
-    };
-
-  };
-  */
 
   if (msg.content.startsWith('!roll')) {
     
@@ -394,48 +291,9 @@ if (msg.content.startsWith('!tdee')) {
      
   };
 
-  // Start of the $ commands (for admin use)
-
-  if (msg.content.startsWith('$')) {
-    
-    const args = msg.content.slice(config.prefix.length).trim().split(/ +/);
-	  const command = args.shift().toLowerCase();
-
-    const deleteQuestion = qotd.deleteQuestion;
-    const updateQuestions = qotd.updateQuestions;
-    const db = qotd.db;   
-
-    if (command === 'qotd') {
-      db.get("questions").then(questions => {
-        const question = questions[Math.floor(Math.random() * questions.length)];
-          //Sends QOTD to the main chat, insert channel ID as a string
-          client.channels.cache.get('859954213371117609').send(qotd.qotdOuput(question));
-          client.channels.cache.get('832632933403459594').send(`Please copy, paste, and send the following messsage:`);
-          client.channels.cache.get('832632933403459594').send(`\`$del ${question}\``);
-        });
-      };
-
-    if (command === 'new') {
-      question = msg.content.split("$new ")[1];
-      updateQuestions(question);
-      msg.channel.send(`:floppy_disk: New question saved: \`${question}\``);
-    };
-
-    if (command === 'del') {
-      
-      index = msg.content.split("$del ")[1];
-      deleteQuestion(index);
-      msg.channel.send(`Question deleted: \`${index}\``);
-      
-    };
-
-    if (command === 'list') {
-      db.get("questions").then(questions => {
-        msg.channel.send(questions);
-      });
-    };
-
-  }; //ends command prefix listener
+  if (msg.content.includes("gorl") || msg.content.includes("Gorl")) msg.channel.send("*gorl*");
+  if (msg.content.includes("poop")) msg.channel.send("That reminds me, one time ||I had to have my poop shaved off my butt at the vet.||");
+  
 
 }); //Ends message listener
 

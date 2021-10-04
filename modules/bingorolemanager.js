@@ -11,7 +11,7 @@ const roleFinder = (month, day) => {
     role = '864571064369283122';
   } else if (month === 7 && day <= 12) {
     role = '864571127384375336';
-  } else if (month === 7 && day <= 19) {
+  } else if (month === 7 && day <= 20) {
     role = '864571236691869716';
   } else {
     role = false;

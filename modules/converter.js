@@ -43,6 +43,8 @@
 const converter = (startingValue, metric, newMetric) => {
 
   Number.parseFloat(startingValue);
+  metric.toLowerCase();
+  newMetric.toLowerCase();
   
   let placeholderValue;
   let convertedValue;
@@ -64,7 +66,7 @@ const converter = (startingValue, metric, newMetric) => {
       break;
     case 'stone':
       metric = 'stone';
-      placeholderValue = startingValue / 63502.29;
+      placeholderValue = startingValue * 63502.29;
       break;
     //Tests units.mass.imperial
     case 'lb':
@@ -159,7 +161,7 @@ const converter = (startingValue, metric, newMetric) => {
       break;
     case 'stone':
       newMetric = 'stone';
-      convertedValue = placeholderValue * 6350.29;
+      convertedValue = placeholderValue / 6350.29;
       break;
     //Tests units.mass.imperial
     case 'lb':
@@ -307,3 +309,19 @@ module.exports.autoConvertTriggers = autoConvertTriggers;
 module.exports.converter = converter;
 module.exports.units = units;
 module.exports.help = help;
+
+/*
+  if (!msg.content.startsWith('!convert') && converter.autoConvertTriggers.some(trigger => msg.content.includes(trigger))) {
+    
+    const input = msg.content;
+    const value = Number.parseFloat(input);
+    //msg.channel.send('I am a triggered gorl.')
+    
+    if (Number.isNaN(value)) {
+      return;
+    } else {
+      msg.reply(converter.autoConvert(input));
+    };
+
+  };
+  */
