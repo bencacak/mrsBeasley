@@ -42,6 +42,10 @@ const help = () => {
     .setDescription(`Click the link to find out more about my commands.`)
     .attachFiles(['./modules/assets/mrsBeasley.jpg'])
     .setThumbnail('attachment://mrsBeasley.jpg')
+    .addFields(
+        { name: "Donate Monero (XMR)", value: process.env.XMR },
+		{ name: "Donate Bitcoin (BTC)", value: process.env.BTC },
+    )
     .setTimestamp()
     .setFooter('Meow Meow');
 

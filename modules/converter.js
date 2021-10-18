@@ -95,7 +95,7 @@ const converter = (startingValue, metric, newMetric) => {
       metric = 'fluidOunce';
       placeholderValue = startingValue / 33.814;
       break;
-    case 'c':
+    case 'cup':
       metric = 'cup';
       placeholderValue = startingValue * 4.227;
       break;
