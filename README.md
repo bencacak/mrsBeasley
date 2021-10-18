@@ -8,7 +8,7 @@
 ##### 424vxRh3NEAXarqhq8JBjLdGj6v2vfiWt1Hfm8rtbq9e2PFrEAc3KxUEsAqMBvyDkMdAUavRBvthRBG51MbAJQFB6QGkEgH
 ---
 #### Donate Bitcoin (BTC):
-##### bc1qfcg63c79rc6uvarzppjkllc7zkjrg9mdrctf0u
+##### 3Pz3gsLgP5hnE8YcLD3YdqtnJey7WJ4Qm5
 ---
 ## User Commands:
 
