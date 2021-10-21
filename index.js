@@ -5,6 +5,7 @@ const { prefix } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+const { donate } = require("./modules/addresses.js");
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -26,6 +27,7 @@ client.on('message', msg => {
         const { help } = require("./modules/kittydata.js");
         return msg.channel.send(help());
     };
+    if (msg.content.includes("support") || msg.content.includes("Support")) msg.channel.send(donate);
     
 	const args = msg.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
@@ -36,9 +38,8 @@ client.on('message', msg => {
 		client.commands.get(command).execute(msg, args);
 	} catch (error) {
 		console.error(error);
-		msg.reply('there was an error trying to execute that command!');
+		msg.reply('NyanNyanNyanNyanNyanNyanNyan...');
 	};
-
 });
 
 //Logs to the console when it is ready

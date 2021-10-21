@@ -20,7 +20,6 @@ module.exports = {
                 await echo();
                 await msg.channel.send(output);
                 await msg.delete({ timeout: 100 });
-                console.log(`**${msg.author.username}:** ${input}`);
             } catch (err) {
                 console.log(err);
             };

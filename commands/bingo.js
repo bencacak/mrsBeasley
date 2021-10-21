@@ -1,5 +1,4 @@
 const dayjs = require("dayjs");
-const bingo = require("../modules/bingorolemanager.js");
 
 module.exports = {
 	name: 'bingo',
@@ -12,31 +11,42 @@ module.exports = {
             dayOfWeek: dayjs().day()
         };
     
-        const weekdays = bingo.weekdays;
-        const roleFinder = bingo.roleFinder;
-        const months = bingo.months;
-        const member = msg.member;
+        const weekdays = [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+        ];
 
-        /*
-        if (roleFinder(date.month, date.day) === false) {
-        return msg.reply(`There is no bingo challenge happening right now. Please ping a captain for details.`)
-        } else {
-        */
-            try {
-                await msg.react('🇧');
-                await msg.react('🇮');
-                await msg.react('🇳');
-                await msg.react('🇬');
-                await msg.react('🇴');
-                await msg.react('❕');
-                //await member.roles.add(roleFinder(date.month, date.day));
-                await msg.reply(`Nice work on getting bingo on ${weekdays[date.dayOfWeek]}, ${months[date.month]} ${date.day}. Wet nose kisses for you!`);
-            }
-            catch (err) {
-                msg.reply('This feature is exclusive to team Road Trippin\'.');
-                console.log(err);
-            };
-        //};
+            const months = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ];
 
+        try {
+            await msg.react('🇧');
+            await msg.react('🇮');
+            await msg.react('🇳');
+            await msg.react('🇬');
+            await msg.react('🇴');
+            await msg.react('❕');
+            await msg.reply(`Nice work on getting bingo on ${weekdays[date.dayOfWeek]}, ${months[date.month]} ${date.day}. Wet nose kisses for you!`);
+        }
+        catch (err) {
+            console.log(err);
+        };
 	},
 };

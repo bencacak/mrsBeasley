@@ -1,4 +1,3 @@
-//Function picks the correct rolee to assign based on the current date and time of a user executing the command
 const roleFinder = (month, day) => {
   let role;
   if (month === 6 && day <= 15) {
@@ -18,32 +17,3 @@ const roleFinder = (month, day) => {
   };
   return role;
 };
-
-const weekdays = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday'
-];
-
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-];
-
-module.exports.roleFinder = roleFinder;
-module.exports.weekdays = weekdays;
-module.exports.months = months;
