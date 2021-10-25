@@ -20,6 +20,8 @@ module.exports = {
             msg.channel.send(donate.donateSOL);
         } else if (input.includes("cosmos") || input.includes("atom")) {
             msg.channel.send(donate.donateATOM);
+        } else if (input.includes("raven") || input.includes("rvn")) {
+            msg.channel.send(donate.donateRVN);
         } else {
             msg.channel.send(donate.donate);
         };

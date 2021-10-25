@@ -8,33 +8,39 @@
 ## Support Mrs. Beasley and Her Developer
 
 ### Donate Bitcoin (BTC):
-![Bitcoin Wallet QR Code](./modules/assets/QR-BTC.jpg)
+![Bitcoin Wallet QR Code](./modules/assets/QR-BTC.png)
 ```
-bc1qzy0s58hmkvz37gzcq0t7rt3ksue5zszgluju7u
+bc1qxxslyaxu75hrnclxrcxdnqzkddeg9q4yeyckkg
 ```
 
 ### Donate Cosmos (ATOM):
-![Cosmos Wallet QR Code](./modules/assets/QR-ATOM.jpg)
+![Cosmos Wallet QR Code](./modules/assets/QR-ATOM.png)
 ```
-cosmos1dqp2sa7zslfrshatk2q4q7lsruaqc3c0h0q85p
+cosmos1fvd7q2wt074wr2eqnk0xmwnm0eyjwaddrjnqzg
 ```
 
 ### Donate Ethereum (ETH)
-![Ethereum Wallet QR Code](./modules/assets/QR-ETH.jpg)
+![Ethereum Wallet QR Code](./modules/assets/QR-ETH.png)
 ```
-0x821a2030ed9c2428B533279b12C1fD9948886991
+0xF7107fbcf1926169109dfd42d70f190792636440
 ```
 
 ### Donate Monero (XMR):
-![Monero Wallet QR Code](./modules/assets/QR-XMR.jpg)
+![Monero Wallet QR Code](./modules/assets/QR-XMR.png)
 ```
-44gvb1wRS4V2SZEh5hEEJL9xg26V5Gt8YCd2pMjYKzNMK67koonFWTXTrzXoFTB7xzHe32zu7gAPmBnPBCPrckPdBMCntPr
+486en6uVhnVcuk9H5fSYnmKvat2x1xadKFy3995En2D8EaTyqTRAgSR6RQL9YHrcgwcQHExrWPSXpJUDdzF38Y68CCLML1A
 ```
 
 ### Donate Solana (SOL):
-![Solana Wallet QR Code](./modules/assets/QR-SOL.jpg)
+![Solana Wallet QR Code](./modules/assets/QR-SOL.png)
 ```
-Hu7X6NahrbKc4SZGH3cFujRziqkXUCJ7rXA1WWudDfC9
+26vESmFnQCKX7xi7CmGXuxXPeSo7u1Env5ZXum8hXvpq
+```
+
+### Donate Raven Coin (RVN):
+![Raven Coin Wallet QR Code](./modules/assets/QR-RVN.png)
+```
+RKpVav4VvgT1vmWmuHnDCjNJy4XtMXxhu8
 ```
 
 ---
