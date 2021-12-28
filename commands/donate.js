@@ -14,17 +14,11 @@ module.exports = {
             msg.channel.send(donate.donateBTC);
         } else if (input.includes("monero") || input.includes("xmr")) {
             msg.channel.send(donate.donateXMR);
-        } else if (input.includes("ethereum") || input.includes("eth")) {
+        } else if (input.includes("ethereum") || input.includes("eth") || input.includes("erc")) {
             msg.channel.send(donate.donateETH);
-        } else if (input.includes("solana") || input.includes("sol")) {
-            msg.channel.send(donate.donateSOL);
-        } else if (input.includes("cosmos") || input.includes("atom")) {
-            msg.channel.send(donate.donateATOM);
-        } else if (input.includes("raven") || input.includes("rvn")) {
-            msg.channel.send(donate.donateRVN);
-        } else {
-            msg.channel.send(donate.donate);
-        };
+        } else if (input.includes("stellar") || input.includes("lumens") || input.includes("xlm")) {
+            msg.channel.send(donate.donateXLM);
+        } 
 
 	},
 };

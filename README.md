@@ -3,47 +3,10 @@
 ##### This bot is my volunteer work for the /r/loseitchallenges hosted on Reddit and Discord quarterly. Functions of this bot are made to assist in the moderation of the challenge but I have designed to be a compliment to any server. Feel free to fork and make it your own, or add to your own server using the links below.
 
 ##### The bot is named after my cat, Mrs. Beasley, and takes after her sassy personality.
----
-
-## Support Mrs. Beasley and Her Developer
-
-### Donate Bitcoin (BTC):
-![Bitcoin Wallet QR Code](./modules/assets/QR-BTC.png)
-```
-bc1qxxslyaxu75hrnclxrcxdnqzkddeg9q4yeyckkg
-```
-
-### Donate Cosmos (ATOM):
-![Cosmos Wallet QR Code](./modules/assets/QR-ATOM.png)
-```
-cosmos1fvd7q2wt074wr2eqnk0xmwnm0eyjwaddrjnqzg
-```
-
-### Donate Ethereum (ETH)
-![Ethereum Wallet QR Code](./modules/assets/QR-ETH.png)
-```
-0xF7107fbcf1926169109dfd42d70f190792636440
-```
-
-### Donate Monero (XMR):
-![Monero Wallet QR Code](./modules/assets/QR-XMR.png)
-```
-486en6uVhnVcuk9H5fSYnmKvat2x1xadKFy3995En2D8EaTyqTRAgSR6RQL9YHrcgwcQHExrWPSXpJUDdzF38Y68CCLML1A
-```
-
-### Donate Solana (SOL):
-![Solana Wallet QR Code](./modules/assets/QR-SOL.png)
-```
-26vESmFnQCKX7xi7CmGXuxXPeSo7u1Env5ZXum8hXvpq
-```
-
-### Donate Raven Coin (RVN):
-![Raven Coin Wallet QR Code](./modules/assets/QR-RVN.png)
-```
-RKpVav4VvgT1vmWmuHnDCjNJy4XtMXxhu8
-```
 
 ---
+
+## [Support Mrs. Beasley and Her Developer Here!](./DONATE.md)
 
 ## Add to you server
 
@@ -213,6 +176,13 @@ You also are able to assign roles using this command if you fork the project. In
 ![a screenshot of the output](./modules/assets/choose.JPG)
 
 ---
+
+### `!poll` [Beta]
+
+- Use `!poll` to create a poll in the chat.
+- *Syntax:* `!poll` `<question>` `?` `<possible response>` `;` `<possible response>` `;` `<possible response>`
+- The question is separted from the responses via the question mark and repsonses are separated from eachother with semicolons.
+- Possible responses are assigned an emoji, and the bot reacts to its auto generated message with the listed options.
 
 ### `!donate` &mdash; Donate to this Project
 

@@ -1,6 +1,6 @@
 {
   "name": "beasleyBot",
-  "version": "2.1.3",
+  "version": "2.2.1",
   "description": "A fun companion to Discord",
   "main": "index.js",
   "scripts": {

@@ -14,8 +14,7 @@ module.exports = {
         try {
 
             await lastMessage.react(input);
-            await console.log(`${msg.author.username} reacted to ${lastMessage} with ${input}`);
-            await msg.delete({ timeout: 100});
+            await msg.delete({ timeout: 1});
 
         } catch (err) {
 

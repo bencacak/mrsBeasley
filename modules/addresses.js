@@ -9,7 +9,7 @@ const donate = new Discord.MessageEmbed()
     .attachFiles(['./modules/assets/mrsBeasley.jpg'])
     .setThumbnail('attachment://mrsBeasley.jpg')
     .addFields(
-        { name: "Currencies you can donate:", value: "Bitcoin (BTC), Monero (XMR), Ethereum (ETH), Solana (SOL), Raven Coin (RVN), and Cosmos (ATOM)" },
+        { name: "Currencies you can donate:", value: "Bitcoin (BTC), Monero (XMR), Ethereum/ERC20 Tokens (ETH), Stellar Lumens (XLM)" },
     )
     .setTimestamp()
     .setFooter('Meow Meow');
@@ -46,37 +46,6 @@ const donateBTC = new Discord.MessageEmbed()
     .setTimestamp()
     .setFooter('Meow Meow');
 
-const donateSOL = new Discord.MessageEmbed()
-    .setColor('#000')
-    .setTitle('Support Mrs. Beasley')
-    .setURL('https://github.com/bencacak/mrsBeasley/blob/master/README.md')
-    .setAuthor('Mrs. Beasley et al.')
-    .setDescription(`Use \`!donate <coin>\` to get specific wallet information. Thank you for supporting me!`)
-    .attachFiles(['./modules/assets/ico-SOL.png'])
-    .setThumbnail('attachment://ico-SOL.png')
-    .addFields(
-        { name: "Donate Solana (SOL)", value: process.env.SOL },
-    )
-    .attachFiles(['./modules/assets/QR-SOL.png'])
-    .setImage('attachment://QR-SOL.png')
-    .setTimestamp()
-    .setFooter('Meow Meow');
-
-const donateATOM = new Discord.MessageEmbed()
-    .setColor('#000')
-    .setTitle('Support Mrs. Beasley')
-    .setURL('https://github.com/bencacak/mrsBeasley/blob/master/README.md')
-    .setAuthor('Mrs. Beasley et al.')
-    .setDescription(`Use \`!donate <coin>\` to get specific wallet information. Thank you for supporting me!`)
-    .attachFiles(['./modules/assets/ico-ATOM.png'])
-    .setThumbnail('attachment://ico-ATOM.png')
-    .addFields(
-        { name: "Donate Cosmos (ATOM)", value: process.env.ATOM },
-    )
-    .attachFiles(['./modules/assets/QR-ATOM.png'])
-    .setImage('attachment://QR-ATOM.png')
-    .setTimestamp()
-    .setFooter('Meow Meow');
 
 const donateETH = new Discord.MessageEmbed()
     .setColor('#000')
@@ -87,33 +56,27 @@ const donateETH = new Discord.MessageEmbed()
     .attachFiles(['./modules/assets/ico-ETH.png'])
     .setThumbnail('attachment://ico-ETH.png')
     .addFields(
-        { name: "Donate Ethereum (ETH)", value: process.env.ETH },
+        { name: "Donate Ethereum/ERC20 (ETH)", value: process.env.ETH },
     )
     .attachFiles(['./modules/assets/QR-ETH.png'])
     .setImage('attachment://QR-ETH.png')
     .setTimestamp()
     .setFooter('Meow Meow');
 
-const donateRVN = new Discord.MessageEmbed()
+const donateXLM = new Discord.MessageEmbed()
     .setColor('#000')
     .setTitle('Support Mrs. Beasley')
     .setURL('https://github.com/bencacak/mrsBeasley/blob/master/README.md')
     .setAuthor('Mrs. Beasley et al.')
     .setDescription(`Use \`!donate <coin>\` to get specific wallet information. Thank you for supporting me!`)
-    .attachFiles(['./modules/assets/ico-RVN.png'])
-    .setThumbnail('attachment://ico-RVN.png')
+    .attachFiles(['./modules/assets/ico-XLM.png'])
+    .setThumbnail('attachment://ico-XLM.png')
     .addFields(
-        { name: "Donate Raven Coin (RVN)", value: process.env.RVN },
+        { name: "Donate Stellar Lumens (XLM)", value: process.env.XLM },
     )
-    .attachFiles(['./modules/assets/QR-RVN.png'])
-    .setImage('attachment://QR-RVN.png')
+    .attachFiles(['./modules/assets/QR-XLM.jpg'])
+    .setImage('attachment://QR-XLM.jpg')
     .setTimestamp()
     .setFooter('Meow Meow');
 
-module.exports.donate = donate;
-module.exports.donateATOM = donateATOM;
-module.exports.donateBTC = donateBTC;
-module.exports.donateETH = donateETH;
-module.exports.donateSOL = donateSOL;
-module.exports.donateXMR = donateXMR;
-module.exports.donateRVN = donateRVN;
+module.exports = { donate, donateBTC, donateETH, donateXMR, donateXLM }

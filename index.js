@@ -27,7 +27,7 @@ client.on('message', msg => {
         const { help } = require("./modules/kittydata.js");
         return msg.channel.send(help());
     };
-    if (msg.content.includes("support") || msg.content.includes("Support")) msg.channel.send(donate);
+    if (msg.content.includes(" donat") || msg.content.includes("Donat")) msg.channel.send(donate);
     
 	const args = msg.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
@@ -45,7 +45,7 @@ client.on('message', msg => {
 //Logs to the console when it is ready
 client.once('ready', () => {
     
-	console.log(client.user.tag + " is live!");
+	console.log(client.user.tag + " is live!")
 
 });
 
