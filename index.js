@@ -27,7 +27,8 @@ client.on('message', msg => {
         const { help } = require("./modules/kittydata.js");
         return msg.channel.send(help());
     };
-    if (msg.content.includes(" donat") || msg.content.includes("Donat")) msg.channel.send(donate);
+    if (msg.content.includes(" donat") || msg.content.includes(" Donat")) msg.channel.send(donate);
+    if (msg.content.includes("mrs") || msg.content.includes("Mrs")) msg.channel.send("My name is Mrs. Beasley")
     
 	const args = msg.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
