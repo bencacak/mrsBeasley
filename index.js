@@ -1,4 +1,5 @@
 // Imports discord.js library and required metadata
+const keepAlive = require("./server") 
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
@@ -49,6 +50,9 @@ client.once('ready', () => {
 	console.log(client.user.tag + " is live!")
 
 });
+
+keepAlive()
+
 
 //Gets the token from the .env
 client.login(process.env.TOKEN);

@@ -16,37 +16,37 @@ module.exports = {
             let num;
             switch(i) {
                 case 0:
-                    num = "0️⃣"
+                    num = "🇦"
                     break;
                 case 1:
-                    num = "1️⃣"
+                    num = "🇧"
                     break;
                 case 2:
-                    num = "2️⃣"
+                    num = "🇨"
                     break;
                 case 3:
-                    num = "3️⃣"
+                    num = "🇩"
                     break;
                 case 4:
-                    num = "4️⃣"
+                    num = "🇪"
                     break;
                 case 5:
-                    num = "5️⃣"
+                    num = "🇫"
                     break;
                 case 6:
-                    num = "6️⃣"
+                    num = "🇬"
                     break;
                 case 7:
-                    num = "7️⃣"
+                    num = "🇭"
                     break;
                 case 8:
-                    num = "8️⃣"
+                    num = "🇮"
                     break;
                 case 9:
-                    num = "9️⃣"
+                    num = "🇯"
                     break;
                 case 10:
-                    num = "🔟"
+                    num = "🇰"
                     break;
                 default: 
                     num = "*" 
@@ -56,42 +56,42 @@ module.exports = {
         msg.channel.send(output).then(sentMessage => {
             for (let i = 0; i < output.length - 1; i++) {
                 let num;
-                switch(i) {
-                    case 0:
-                        num = "0️⃣"
-                        break;
-                    case 1:
-                        num = "1️⃣"
-                        break;
-                    case 2:
-                        num = "2️⃣"
-                        break;
-                    case 3:
-                        num = "3️⃣"
-                        break;
-                    case 4:
-                        num = "4️⃣"
-                        break;
-                    case 5:
-                        num = "5️⃣"
-                        break;
-                    case 6:
-                        num = "6️⃣"
-                        break;
-                    case 7:
-                        num = "7️⃣"
-                        break;
-                    case 8:
-                        num = "8️⃣"
-                        break;
-                    case 9:
-                        num = "9️⃣"
-                        break;
-                    case 10:
-                        num = "🔟"
-                        break;
-                    default: 
-                        num = "" 
+                  switch(i) {
+                      case 0:
+                      num = "🇦"
+                      break;
+                  case 1:
+                      num = "🇧"
+                      break;
+                  case 2:
+                      num = "🇨"
+                      break;
+                  case 3:
+                      num = "🇩"
+                      break;
+                  case 4:
+                      num = "🇪"
+                      break;
+                  case 5:
+                      num = "🇫"
+                      break;
+                  case 6:
+                      num = "🇬"
+                      break;
+                  case 7:
+                      num = "🇭"
+                      break;
+                  case 8:
+                      num = "🇮"
+                      break;
+                  case 9:
+                      num = "🇯"
+                      break;
+                  case 10:
+                      num = "🇰"
+                      break;
+                  default: 
+                      num = "*"
                 }
                 sentMessage.react(num);
 
