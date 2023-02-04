@@ -14,6 +14,4 @@ const donate = new Discord.MessageEmbed()
     .setTimestamp()
     .setFooter('Meow Meow');
 
-
-
 module.exports = { donate }

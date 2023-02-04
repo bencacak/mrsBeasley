@@ -1,5 +1,5 @@
 // Imports discord.js library and required metadata
-const keepAlive = require("./server") 
+const keepAlive = require("./server.js") 
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
@@ -30,6 +30,7 @@ client.on('message', msg => {
     };
     if (msg.content.includes(" donat") || msg.content.includes(" Donat")) msg.channel.send(donate);
     if (msg.content.includes("mrs") || msg.content.includes("Mrs")) msg.channel.send("My name is Mrs. Beasley")
+    if (msg.content.includes("dith")) msg.channel.send("I like Edith. Edith is my friend.")
     
 	const args = msg.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
@@ -51,7 +52,7 @@ client.once('ready', () => {
 
 });
 
-keepAlive()
+//keepAlive()
 
 
 //Gets the token from the .env

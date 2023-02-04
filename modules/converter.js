@@ -19,7 +19,7 @@
       imperial: {
         gallon: ['gal', 'gallon', 'gallons'],
         fluidOunce: ['floz', 'fl', 'fluid', 'fluidounce', 'fluidounces'],
-        cup: ['c', 'cup', 'cup'],
+        cup: ['cup', 'cups'],
         pint: ['pt', 'pint', 'pints'],
         quart: ['q', 'qt', 'qts', 'quart', 'quarts']
       }//Ends volume.imperial
@@ -141,6 +141,15 @@ const converter = (startingValue, metric, newMetric) => {
       metric = 'mile';
       placeholderValue = startingValue * 1609.34;
       break;
+    case 'c':
+      metric = 'degrees celcius';
+      placeholderValue = (startingValue * 1.8) + 32; 
+      break;
+    case 'f':
+      metric = 'degrees fahrenheit';
+      placeholderValue = (startingValue - 32) / 1.8;
+      break;
+      
     default:
       false;
   };
@@ -235,6 +244,14 @@ const converter = (startingValue, metric, newMetric) => {
     case 'mi':
       newMetric = 'mile';
       convertedValue = placeholderValue / 1609.34;
+      break;
+    case 'c':
+      newMetric = 'degrees celsuis';
+      convertedValue = placeholderValue;
+      break;
+    case 'f':
+      newMetric = 'degrees fahrenheit';
+      convertedValue = placeholderValue;
       break;
     default:
       false;

@@ -7,7 +7,7 @@ module.exports = {
         const messages = await msg.channel.messages.fetch({ limit: 2 });
         const lastMessage = messages.last();
 
-        //Separtes the command from the emote 
+        //Separates the command from the emote 
         const command = '!react '
         let input = msg.content.split(command)[1];
     

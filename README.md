@@ -187,14 +187,9 @@ You also are able to assign roles using this command if you fork the project. In
 ### `!donate` &mdash; Donate to this Project
 
 - While this project is open source and there is no expectation for you to donate, donations to one of Mrs. Beasley's wallets would be much appreciated.
-- Use `!donate` to pull up a list of sub-commands, which provide information to specific wallets.
     - *Note:* the word "support" in a message will trigger this command too!
-- `!donate <wallet>` will provide the wallet address. Currently supported wallets:
-    - Bitcoin / BTC
-    - Ethereum / ETH 
-    - Cosmos / ATOM 
-    - Solana / SOL 
-    - Monero / XMR
+- `!donate` will provide the wallet address. Currently supported wallets:
+    - PayPal
 
 ```
 Input:
@@ -203,17 +198,8 @@ Input:
 
 Output:
 
-*Message embed with further command information*
-
-Input:
-
-!donate <wallet>
-
-Output:
-
 *Message embed with wallet address*
 ```
-- You can type the currency name or symbol as an argument.
-- I will work on getting support for fiat donations as well.
+
 
 
